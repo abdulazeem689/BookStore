@@ -23,10 +23,10 @@ class HomeScreen extends React.Component{
   render(){
     return(
       <View>
-        <View style={{marginTop: 20, flexDirection: 'row', justifyContent: 'space-around'}}>
+        <View style={{marginTop: 10, flexDirection: 'row', justifyContent: 'space-around'}}>
           
           {
-            this.props.searchStatus ? <TextInput style={{fontSize: 18, width: 250, borderBottomColor: "grey", borderBottomWidth: 1}} placeholder='search a book' onChangeText = {text => this.props.SearchFilter(text.toLowerCase())} /> : null
+            this.props.searchStatus ? <TextInput style={{fontSize: 15, width: 250, borderBottomColor: "grey", borderBottomWidth: 1}} placeholder='search a book' onChangeText = {text => this.props.SearchFilter(text.toLowerCase())} /> : null
           }
           <TouchableOpacity onPress={()=>this.props.toggleStatus()}>
             <Image style = {{height: 25, width: 25}}
@@ -35,7 +35,7 @@ class HomeScreen extends React.Component{
             />
           </TouchableOpacity>
         </View>
-        <View style={{paddingTop: 10}}>
+        <View style={{paddingTop: 5}}>
         <FlatList
           data = {this.props.bookData}
           keyExtractor={(item, index)=>index.toString()}
