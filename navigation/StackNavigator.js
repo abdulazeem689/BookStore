@@ -3,6 +3,7 @@ import {TouchableOpacity, Image} from 'react-native';
 import {NavigationContainer, DrawerActions} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import DrawerNavigator from './DrawerNavigator';
+import BookScreen from '../screens/BookScreen';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default class StackNavigator extends React.Component {
             }
           )
           } />
+          <Stack.Screen name="BookList" component={BookScreen} options={{title: "Drama Books"}} />
         </Stack.Navigator>
       </NavigationContainer>
     )

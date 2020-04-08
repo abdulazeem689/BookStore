@@ -12,25 +12,40 @@ let initialState = {
   searchStatus: false,
   bookData : [],
   categories : [],
+  bookList: [],
 }
 
 const reducer = (state=initialState, action) => {
   switch(action.type){
     case 'Toggle_Status':
-      return{ bookData: state.searchStatus==true ? initialState.bookData : state.bookData, searchStatus: state.searchStatus==true ? false : true , categories: state.categories}
+      return{ bookData: state.searchStatus==true ? initialState.bookData : state.bookData, searchStatus: state.searchStatus==true ? false : true , categories: state.categories, bookList: state.bookList}
     case 'Call_Data':
-      return{ bookData: initialState.bookData, searchStatus: state.searchStatus, categories: state.categories }
+      return{ bookData: initialState.bookData, searchStatus: state.searchStatus, categories: state.categories, bookList: state.bookList }
     case 'Search_Filter':
-      return{ bookData: initialState.bookData.filter(book => book.name.toLowerCase().includes(action.value)), searchStatus: state.searchStatus, categories: state.categories }
+      return{ bookData: initialState.bookData.filter(book => book.name.toLowerCase().includes(action.value)), searchStatus: state.searchStatus, categories: state.categories, bookList: state.bookData }
     case 'Call_Categories':
-      return{ categories: initialState.categories, bookData: state.bookData, searchStatus: state.searchStatus }
+      return{ categories: initialState.categories, bookData: state.bookData, searchStatus: state.searchStatus, bookList: state.bookList }
+    case 'Call_BookList':
+      callBookList(action.value)
+      return{ bookList: initialState.bookList, categories: state.categories, bookData: state.bookData, searchStatus: state.searchStatus }
     
   }
   return state
 }
 const store = createStore(reducer)
 
-
+async function callBookList(category){
+  initialState.bookList = []
+  await itemRef.child(category).on('value', snapshot => {
+    let data = snapshot.val()
+    console.log(data)
+    if(snapshot.val()){
+      const tempArr = []
+      Object.keys(data).forEach(value => tempArr.push(data[value]))
+      initialState.bookList = tempArr
+    }
+  })
+}
 
 export default class App extends React.Component {
   constructor(props){

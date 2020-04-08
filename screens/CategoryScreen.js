@@ -22,11 +22,13 @@ class CategoryScreen extends React.Component{
           data = {this.props.categories}
           keyExtractor={(item, index)=>index.toString()}
           renderItem = {({item})=>
-          <View style={{height: 190, margin: 20, backgroundColor: "white"}}>
-            <Image source={{uri: item.imageUrl}}
-            style={{height: 170, width: windowWidth/2 - 40, borderRadius: 10}}/>
-            <Text style={{textAlign: "center"}}>{item.name}</Text>
-          </View>
+          <TouchableOpacity onPress = {()=>this.props.navigation.navigate("BookList", {category: item.name})}>
+            <View style={{height: 190, margin: 20, backgroundColor: "white"}}>
+              <Image source={{uri: item.imageUrl}}
+              style={{height: 170, width: windowWidth/2 - 40, borderRadius: 10}}/>
+              <Text style={{textAlign: "center"}}>{item.name}</Text>
+            </View>
+          </TouchableOpacity>
         }
         numColumns = {2}
           />
