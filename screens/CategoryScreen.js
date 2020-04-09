@@ -17,7 +17,10 @@ class CategoryScreen extends React.Component{
   render(){
     return(
       <View>
-        <View style={{paddingTop: 30}}>
+        <View style={{marginTop: 10, flexDirection: 'row', justifyContent: 'space-around'}}>
+          <Text style={{fontSize: 20}}>Categories</Text>
+        </View>
+        <View style={{paddingTop: 10}}>
         <FlatList
           data = {this.props.categories}
           keyExtractor={(item, index)=>index.toString()}
@@ -46,7 +49,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    callCategories : () => dispatch({type: 'Call_Categories'})
+    callCategories : () => dispatch({type: 'Call_Categories'}),
   }
 }
 

@@ -7,7 +7,7 @@ import BookScreen from '../screens/BookScreen';
 
 const Stack = createStackNavigator();
 
-export default class StackNavigator extends React.Component {
+class StackNavigator extends React.Component {
 
   render(){
     return(
@@ -15,7 +15,7 @@ export default class StackNavigator extends React.Component {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={DrawerNavigator} options={({navigation})=>(
             {
-              title: "Your Books",
+              title: "BookStore",
               headerLeft: ()=>(
                 <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer()) }>
                   <Image style = {{height: 30, width: 30}}
@@ -26,9 +26,12 @@ export default class StackNavigator extends React.Component {
             }
           )
           } />
-          <Stack.Screen name="BookList" component={BookScreen} options={{title: "Drama Books"}} />
+          <Stack.Screen name="BookList" component={BookScreen} options={({route}) =>({title: route.params.category, headerBackTitleVisible: false})} />
         </Stack.Navigator>
       </NavigationContainer>
     )
   }
 }
+
+
+export default StackNavigator;

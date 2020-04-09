@@ -1,7 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Dimensions, TextInput} from 'react-native';
-import Firebase from 'firebase';
-import {db} from '../src/Config';
 import {connect} from 'react-redux';
 
 
@@ -9,24 +7,19 @@ const windowWidth = Dimensions.get('window').width
 
 class HomeScreen extends React.Component{
 
+
   constructor(props){
     super(props);
     this.props.callData()
-  }
-
-  filterBooks(bookName){
-    this.setState({
-      bookData: Data.filter(book => book.name.toLowerCase().includes(bookName))
-    })
   }
   
   render(){
     return(
       <View>
         <View style={{marginTop: 10, flexDirection: 'row', justifyContent: 'space-around'}}>
-          
+          <Text style={{fontSize: 20}}>Your Books</Text>
           {
-            this.props.searchStatus ? <TextInput style={{fontSize: 15, width: 250, borderBottomColor: "grey", borderBottomWidth: 1}} placeholder='search a book' onChangeText = {text => this.props.SearchFilter(text.toLowerCase())} /> : null
+            this.props.searchStatus ? <TextInput style={{fontSize: 15, width: 200, borderBottomColor: "grey", borderBottomWidth: 1}} placeholder='search a book' onChangeText = {text => this.props.SearchFilter(text.toLowerCase())} /> : null
           }
           <TouchableOpacity onPress={()=>this.props.toggleStatus()}>
             <Image style = {{height: 25, width: 25}}

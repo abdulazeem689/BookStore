@@ -13,6 +13,7 @@ let initialState = {
   bookData : [],
   categories : [],
   bookList: [],
+  headerName: "Books",
 }
 
 const reducer = (state=initialState, action) => {
@@ -27,8 +28,7 @@ const reducer = (state=initialState, action) => {
       return{ categories: initialState.categories, bookData: state.bookData, searchStatus: state.searchStatus, bookList: state.bookList }
     case 'Call_BookList':
       callBookList(action.value)
-      return{ bookList: initialState.bookList, categories: state.categories, bookData: state.bookData, searchStatus: state.searchStatus }
-    
+      return{ bookList: initialState.bookList, categories: state.categories, bookData: state.bookData, searchStatus: state.searchStatus }  
   }
   return state
 }
