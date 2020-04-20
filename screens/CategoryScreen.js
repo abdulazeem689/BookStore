@@ -17,10 +17,7 @@ class CategoryScreen extends React.Component{
   render(){
     return(
       <View>
-        <View style={{marginTop: 10, flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Text style={{fontSize: 20}}>Categories</Text>
-        </View>
-        <View style={{paddingTop: 10}}>
+        <View>
         <FlatList
           data = {this.props.categories}
           keyExtractor={(item, index)=>index.toString()}

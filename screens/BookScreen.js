@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Button, FlatList, Dimensions} from 'react-native';
+import {View, Image, Button, FlatList, Dimensions, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 
 
@@ -27,15 +27,17 @@ class BookScreen extends React.Component{
     }
     return(
       <View>
-        <View style={{paddingTop: 5}}>
+        <View>
         <FlatList
           data = {this.props.bookList}
           keyExtractor={(item, index)=>index.toString()}
           renderItem = {({item})=>
-          <View style={{margin: 20}}>
-            <Image source={{uri: item.imageUrl}}
-            style={{height: 230, width: windowWidth/2 - 40, borderRadius: 10}}/>
-          </View>
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate("AboutBook", {bookItem: item})} >
+            <View style={{margin: 20}}>
+              <Image source={{uri: item.imageUrl}}
+              style={{height: 230, width: windowWidth/2 - 40, borderRadius: 10}}/>
+            </View>
+          </TouchableOpacity>
         }
         numColumns = {2}
           />

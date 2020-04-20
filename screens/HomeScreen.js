@@ -16,19 +16,7 @@ class HomeScreen extends React.Component{
   render(){
     return(
       <View>
-        <View style={{marginTop: 10, flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Text style={{fontSize: 20}}>Your Books</Text>
-          {
-            this.props.searchStatus ? <TextInput style={{fontSize: 15, width: 200, borderBottomColor: "grey", borderBottomWidth: 1}} placeholder='search a book' onChangeText = {text => this.props.SearchFilter(text.toLowerCase())} /> : null
-          }
-          <TouchableOpacity onPress={()=>this.props.toggleStatus()}>
-            <Image style = {{height: 25, width: 25}}
-                   source = {require('../app/images/searchBtn.png')}
-
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={{paddingTop: 5}}>
+        <View>
         <FlatList
           data = {this.props.bookData}
           keyExtractor={(item, index)=>index.toString()}
@@ -55,9 +43,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    toggleStatus : () => dispatch({type: 'Toggle_Status'}),
-    callData : () => dispatch({type: 'Call_Data'}),
-    SearchFilter : (searchText) => dispatch({type: 'Search_Filter', value: searchText}),
+    callData : () => dispatch({type: 'Call_Data'})
   }
 }
 

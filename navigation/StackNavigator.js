@@ -4,6 +4,7 @@ import {NavigationContainer, DrawerActions} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import DrawerNavigator from './DrawerNavigator';
 import BookScreen from '../screens/BookScreen';
+import AboutBook from '../screens/AboutBook';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ class StackNavigator extends React.Component {
           )
           } />
           <Stack.Screen name="BookList" component={BookScreen} options={({route}) =>({title: route.params.category, headerBackTitleVisible: false})} />
+          <Stack.Screen name="AboutBook" component={AboutBook} options={({route})=>({title: route.params.bookItem.name})} />
         </Stack.Navigator>
       </NavigationContainer>
     )

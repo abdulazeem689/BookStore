@@ -9,7 +9,6 @@ import {db} from './src/Config';
 let itemRef = db.ref()
 
 let initialState = {
-  searchStatus: false,
   bookData : [],
   categories : [],
   bookList: [],
@@ -18,17 +17,13 @@ let initialState = {
 
 const reducer = (state=initialState, action) => {
   switch(action.type){
-    case 'Toggle_Status':
-      return{ bookData: state.searchStatus==true ? initialState.bookData : state.bookData, searchStatus: state.searchStatus==true ? false : true , categories: state.categories, bookList: state.bookList}
     case 'Call_Data':
-      return{ bookData: initialState.bookData, searchStatus: state.searchStatus, categories: state.categories, bookList: state.bookList }
-    case 'Search_Filter':
-      return{ bookData: initialState.bookData.filter(book => book.name.toLowerCase().includes(action.value)), searchStatus: state.searchStatus, categories: state.categories, bookList: state.bookData }
+      return{ bookData: initialState.bookData, categories: state.categories, bookList: state.bookList }
     case 'Call_Categories':
-      return{ categories: initialState.categories, bookData: state.bookData, searchStatus: state.searchStatus, bookList: state.bookList }
+      return{ categories: initialState.categories, bookData: state.bookData,  bookList: state.bookList }
     case 'Call_BookList':
       callBookList(action.value)
-      return{ bookList: initialState.bookList, categories: state.categories, bookData: state.bookData, searchStatus: state.searchStatus }  
+      return{ bookList: initialState.bookList, categories: state.categories, bookData: state.bookData }  
   }
   return state
 }
