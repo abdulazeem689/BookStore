@@ -11,11 +11,11 @@ export default class DrawerNavigator extends React.Component {
     return(
         <Drawer.Navigator initialRouteName = "Home">
           <Drawer.Screen name="Home" component={HomeScreen} options={{drawerIcon: ()=>
-          <Image source={require('../app/images/home.png')}
+          <Image source={require('../assets/images/home.png')}
           style={{width: 25, height: 25}}/>
           }}/>
           <Drawer.Screen name="Categories" component={CategoryScreen} options={{drawerIcon: ()=>
-          <Image source={require('../app/images/categories.png')}
+          <Image source={require('../assets/images/categories.png')}
           style={{width: 25, height: 25}}/>
           }}/>
         </Drawer.Navigator>

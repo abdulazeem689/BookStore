@@ -1,4 +1,4 @@
-import Firebase from 'firebase';
+import Firebase from './node_modules/firebase';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA207x3GUsdgN2AmRx30_iEFf32VfOoMbI",

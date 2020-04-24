@@ -20,7 +20,7 @@ class StackNavigator extends React.Component {
               headerLeft: ()=>(
                 <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer()) }>
                   <Image style = {{height: 30, width: 30}}
-                  source = {require('../app/images/hmMenu.png')}
+                  source = {require('../assets/images/hmMenu.png')}
                   />
                 </TouchableOpacity>
               ),

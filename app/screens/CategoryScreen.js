@@ -1,7 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Dimensions, TextInput, Button} from 'react-native';
-import Firebase from 'firebase';
-import {db} from '../src/Config';
 import {connect} from 'react-redux';
 
 

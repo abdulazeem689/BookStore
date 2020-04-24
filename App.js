@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {View, ActivityIndicator} from 'react-native';
-import StackNavigator from './navigation/StackNavigator';
+import StackNavigator from './app/navigation/StackNavigator';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {db} from './src/Config';
+import {db} from './app/config/Config';
 
 let itemRef = db.ref()
 
