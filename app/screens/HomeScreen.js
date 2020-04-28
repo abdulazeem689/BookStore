@@ -1,16 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Dimensions, TextInput} from 'react-native';
+import {View, Image, FlatList, Dimensions} from 'react-native';
 import {connect} from 'react-redux';
+import {fetchData} from '../firebaseServices/fetchData';
+import { bindActionCreators } from 'redux';
 
 
 const windowWidth = Dimensions.get('window').width
 
 class HomeScreen extends React.Component{
 
-
   constructor(props){
     super(props);
-    this.props.callData()
+    this.props.callData('Books');
   }
   
   render(){
@@ -41,20 +42,8 @@ function mapStateToProps(state){
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    callData : () => dispatch({type: 'Call_Data'})
-  }
-}
+const mapDispatchToProps = dispatch => bindActionCreators({
+  callData: fetchData,
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-
-
-const styles = StyleSheet.create({
-  imageContainer : {
-    marginTop: 40,
-    marginLeft: 10,
-    height: 40,
-    width: 40,
-  },
-})

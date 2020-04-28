@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Image, Button, FlatList, Dimensions, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchData} from '../firebaseServices/fetchData';
 
 
 const windowWidth = Dimensions.get('window').width
@@ -10,21 +12,10 @@ class BookScreen extends React.Component{
   constructor(props){
     super(props);
     const {category} = this.props.route.params
-    this.props.callBookList(category)
-    console.log(this.props.bookList)
-    
+    this.props.callBookList(category)  
   }
   
   render(){
-    const {category} = this.props.route.params
-    if(this.props.bookList.length == 0){
-      return(
-        <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-          <Button onPress={()=>this.props.callBookList(category)}
-          title="Load Books" />
-        </View>
-      )
-    }
     return(
       <View>
         <View>
@@ -53,10 +44,8 @@ function mapStateToProps(state){
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    callBookList : (category) => dispatch({type: 'Call_BookList', value: category})
-  }
-}
+const mapDispatchToProps = dispatch => bindActionCreators({
+  callBookList: fetchData,
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookScreen);
