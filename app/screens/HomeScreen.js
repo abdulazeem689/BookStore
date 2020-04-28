@@ -19,7 +19,7 @@ class HomeScreen extends React.Component{
       <View>
         <View>
         <FlatList
-          data = {this.props.bookData}
+          data = {this.props.myBooks}
           keyExtractor={(item, index)=>index.toString()}
           renderItem = {({item})=>
           <View style={{margin: 20}}>
@@ -37,8 +37,7 @@ class HomeScreen extends React.Component{
 
 function mapStateToProps(state){
   return{
-    searchStatus: state.searchStatus,
-    bookData: state.bookData
+    myBooks: state.myBooks,
   }
 }
 

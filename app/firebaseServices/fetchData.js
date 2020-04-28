@@ -1,5 +1,5 @@
 import {db} from "../config/Config";
-import {callData, callCategories, callBooks} from '../redux/actions/actions'
+import {callBooks, callCategories, callMyBooks} from '../redux/actions/actions'
 
 export function fetchData(query){
   return dispatch => {
@@ -11,7 +11,7 @@ export function fetchData(query){
         Object.keys(data).forEach(value => tempArr.push(data[value]))
         switch (query) {
           case 'Books':
-            dispatch(callData(tempArr))
+            dispatch(callMyBooks(tempArr))
             break;
           case 'Categories':
             dispatch(callCategories(tempArr))

@@ -1,13 +1,6 @@
-export function callData(data){
-    return {
-        type: "Call_Data",
-        data: data,
-    }
-}
-
-export function callCategories(data){
+export function callMyBooks(data){
     return{
-        type: "Call_Categories",
+        type: "Call_Mybooks",
         data: data,
     }
 }
@@ -15,6 +8,13 @@ export function callCategories(data){
 export function callBooks(data){
     return{
         type: "Call_Books",
+        data: data,
+    }
+}
+
+export function callCategories(data){
+    return{
+        type: "Call_Categories",
         data: data,
     }
 }

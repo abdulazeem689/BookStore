@@ -1,22 +1,26 @@
-import {initialState} from '../store/initialState';
+const initialState = {
+  myBooks: [],
+  books : [],
+  categories : [],
+}
 
 export const reducer = (state=initialState, action) => {
     switch(action.type){
-      case 'Call_Data':
+      case 'Call_Mybooks':
+        return{
+          ...state,
+          myBooks: action.data,
+        }
+      case 'Call_Books':
         return{ 
           ...state,
-          bookData: action.data,
+          books: action.data,
         }
       case 'Call_Categories':
         return{ 
           ...state,
           categories: action.data,
-        }
-      case 'Call_Books':
-        return{ 
-          ...state,
-          bookList: action.data,
-        }  
+        } 
     }
     return state
   }

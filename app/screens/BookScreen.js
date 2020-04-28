@@ -20,7 +20,7 @@ class BookScreen extends React.Component{
       <View>
         <View>
         <FlatList
-          data = {this.props.bookList}
+          data = {this.props.books}
           keyExtractor={(item, index)=>index.toString()}
           renderItem = {({item})=>
           <TouchableOpacity onPress={()=>this.props.navigation.navigate("AboutBook", {bookItem: item})} >
@@ -40,7 +40,7 @@ class BookScreen extends React.Component{
 
 function mapStateToProps(state){
   return{
-    bookList: state.bookList,
+    books: state.books,
   }
 }
 
