@@ -1,11 +1,10 @@
 import React from 'react';
-import {View, Image, FlatList, Dimensions} from 'react-native';
+import {View, Image, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchData} from '../firebaseServices/fetchData';
 import { bindActionCreators } from 'redux';
+import {windowWidth} from '../utils/dimensions';
 
-
-const windowWidth = Dimensions.get('window').width
 
 class HomeScreen extends React.Component{
 

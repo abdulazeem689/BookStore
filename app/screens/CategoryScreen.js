@@ -1,11 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Dimensions, TextInput, Button} from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, Dimensions } from 'react-native';
 import {connect} from 'react-redux';
 import {fetchData} from '../firebaseServices/fetchData';
 import {bindActionCreators} from 'redux';
-
-
-const windowWidth = Dimensions.get('window').width
+import {windowWidth} from '../utils/dimensions';
 
 class CategoryScreen extends React.Component{
 
@@ -38,14 +36,17 @@ class CategoryScreen extends React.Component{
   }
 }
 
+
 function mapStateToProps(state){
   return{
     categories: state.categories
   }
 }
 
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   callCategories: fetchData,
 }, dispatch)
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryScreen);

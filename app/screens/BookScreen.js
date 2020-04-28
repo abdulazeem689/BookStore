@@ -1,11 +1,10 @@
 import React from 'react';
-import {View, Image, Button, FlatList, Dimensions, TouchableOpacity} from 'react-native';
+import {View, Image, FlatList, Dimensions, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchData} from '../firebaseServices/fetchData';
+import {windowWidth} from '../utils/dimensions';
 
-
-const windowWidth = Dimensions.get('window').width
 
 class BookScreen extends React.Component{
 
